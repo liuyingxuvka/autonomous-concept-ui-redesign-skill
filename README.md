@@ -10,7 +10,7 @@
 </p>
 <!-- README HERO END -->
 
-Version: 0.1.0
+Version: 0.1.1
 
 Language note: This README uses an English-first bilingual structure. The Chinese section follows as a full mirror for Chinese readers.
 
@@ -26,12 +26,13 @@ This repository contains a standalone Codex skill for substantial UI redesign wo
 2. Define functional goals, user tasks, required data, required actions, required states, and non-goals.
 3. Draft and review display elements before choosing visual style.
 4. Set information architecture, presentation mode, content pressure, viewport/window contract, palette contract, and visual fidelity contract.
-5. Generate and score multiple UI concept candidates when concept search is warranted.
-6. Generate and gate app/software icon candidates when the product needs a desktop, mobile, packaged web, browser extension, or branded software identity.
-7. Implement inside the existing architecture with `frontend-design`.
-8. Iterate from rendered screenshots with `design-iterator` or a manual bounded loop.
-9. Review implementation-vs-baseline deviations with `design-implementation-reviewer` or a manual equivalent.
-10. Prove geometry, screenshot trust, pointer reachability, content/localization, app icon identity, and remaining risks before claiming completion.
+5. Generate, diagnose, score, and refine multiple UI concept candidates when concept search is warranted.
+6. Select a final concept version and preserve its function, hierarchy, density, color, background/foreground, accent/status, typography, spacing, state, and implementation-simplification decisions as a reusable evaluation package.
+7. Generate and gate app/software icon candidates when the product needs a desktop, mobile, packaged web, browser extension, or branded software identity.
+8. Implement inside the existing architecture with `frontend-design`.
+9. Iterate from rendered screenshots with `design-iterator` or a manual bounded loop while reusing the final concept evaluation package.
+10. Review implementation-vs-baseline deviations with `design-implementation-reviewer` or a manual equivalent.
+11. Prove geometry, screenshot trust, pointer reachability, content/localization, app icon identity, and remaining risks before claiming completion.
 
 The concept-led front half is built into this skill. It does **not** require the older `concept-led-ui-redesign` skill.
 
@@ -125,12 +126,13 @@ See `CHANGELOG.md`.
 2. 定义功能目标、用户任务、必需数据、必需操作、必需状态和非目标。
 3. 先草拟并审查显示元素，再选择视觉风格。
 4. 确定信息架构、呈现模式、内容压力、窗口/视口合同、调色板合同和视觉保真合同。
-5. 需要概念搜索时，生成并评分多组 UI concept 候选。
-6. 当产品需要桌面、移动端、打包 Web、浏览器扩展或品牌软件身份时，生成并检查 app/software icon 候选。
-7. 使用 `frontend-design` 在现有架构内实现。
-8. 使用 `design-iterator` 或手动有限循环，根据渲染截图迭代。
-9. 使用 `design-implementation-reviewer` 或手动等价流程审查实现与基准的偏差。
-10. 在声明完成前，证明几何布局、截图可信度、鼠标可达性、内容/本地化、真实应用图标身份和剩余风险。
+5. 需要概念搜索时，生成、诊断、评分并精修多组 UI concept 候选。
+6. 选出最终 concept 版本，并把功能、层级、密度、颜色、背景/前景、重点色/状态色、字体、间距、状态和实现简化决策保存成可复用评价包。
+7. 当产品需要桌面、移动端、打包 Web、浏览器扩展或品牌软件身份时，生成并检查 app/software icon 候选。
+8. 使用 `frontend-design` 在现有架构内实现。
+9. 使用 `design-iterator` 或手动有限循环，根据渲染截图迭代，并持续复用最终 concept 评价包。
+10. 使用 `design-implementation-reviewer` 或手动等价流程审查实现与基准的偏差。
+11. 在声明完成前，证明几何布局、截图可信度、鼠标可达性、内容/本地化、真实应用图标身份和剩余风险。
 
 concept-led 的前半段已经内建在这个 skill 中。它**不再需要**旧的 `concept-led-ui-redesign` skill。
 

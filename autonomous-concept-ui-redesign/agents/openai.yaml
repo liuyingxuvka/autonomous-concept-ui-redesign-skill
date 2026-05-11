@@ -1,4 +1,4 @@
 interface:
   display_name: "Autonomous Concept UI Redesign"
-  short_description: "Experimental non-interactive UI redesign pipeline"
+  short_description: "Concept-first UI redesign with diagnosis and screenshot QA"
   default_prompt: "Run the autonomous concept UI redesign pipeline for this UI task."

@@ -20,9 +20,15 @@ Concept:
 - information_architecture:
 - design_language:
 - candidate_search_rounds:
+- concept_diagnosis_summary:
+- concept_refinement_rounds:
 - candidate_scoring_summary:
 - selected_target:
+- final_concept_version:
+- final_concept_evaluation_package:
+- color_background_foreground_contract:
 - selected_concept_three_layer_review:
+- concept_readiness:
 - accepted_visual_cues:
 - rejected_or_simplified_cues:
 
@@ -47,6 +53,8 @@ App Icon:
 Iteration:
 - iteration_skill:
 - rounds_run:
+- concept_evaluation_reused:
+- color_background_foreground_checks:
 - issues_fixed:
 - stopped_reason:
 

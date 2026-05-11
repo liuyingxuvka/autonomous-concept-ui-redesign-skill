@@ -15,11 +15,12 @@ Do not require or load the old `concept-led-ui-redesign` skill.
     display element draft/review, information architecture, presentation mode,
     content pressure, and QA implications.
 - `references/concept-brief.md`
-  - Role: imagegen concept prompt contract, visual anchors, functional zones,
-    content/localization constraints, app icon direction, and selected concept
-    three-layer review.
+  - Role: imagegen concept prompt contract, visual anchors, color/effect
+    contract, functional zones, content/localization constraints, app icon
+    direction, and selected concept three-layer review/refinement.
 - `references/design-search.md`
-  - Role: first-round candidate sets, scoring matrix, second-round synthesis,
+  - Role: first-round candidate sets, concept diagnosis, scoring matrix,
+    second-round synthesis, readiness checks, final concept evaluation package,
     final concept selection, and app icon pairing.
 - `references/visual-qa-loop.md`
   - Role: rendered screenshot trust, functional walkthrough, pointer
@@ -27,7 +28,8 @@ Do not require or load the old `concept-led-ui-redesign` skill.
     in-UI icon, motion/light/depth, and final visual QA.
 - `references/divergence-review.md`
   - Role: classify concept-vs-implementation differences as accepted, UI fix,
-    concept revision, or regeneration.
+    concept revision, or regeneration, using the final concept evaluation
+    package during screenshot comparison.
 - `references/platform-notes.md`
   - Role: desktop, high-DPI Windows, canvas/custom drawing, slide, and other
     non-standard rendering guidance.

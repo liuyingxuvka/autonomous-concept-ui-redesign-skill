@@ -33,9 +33,13 @@ Before implementation evidence is accepted, confirm the selected concept came fr
 
 - at least three first-round candidate sets were generated
 - first-round candidates were meaningfully different, not near-duplicate color tweaks
-- each candidate was scored for function, display element value/load, interaction clarity, information presentation, aesthetics, app icon quality when applicable, and implementation feasibility
+- each candidate was diagnosed for functional completeness, feature overload, fake or duplicate elements, state clarity, information density, aesthetics, app icon quality when applicable, and implementation feasibility
+- promising but flawed candidates were refined, simplified, or explicitly rejected before final selection
 - second-round candidates were synthesized from the strongest first-round properties
 - the final selection rationale considered all first- and second-round candidates
+- the final accepted concept version passed readiness before implementation began
+- a final concept evaluation package exists and is reused during screenshot
+  comparison, including color/background/foreground expectations
 - app/software icon candidates were paired with UI candidates when the product needs an app icon
 
 ## Screenshot Method Gate
@@ -127,6 +131,11 @@ Before changing functionality, routes, layout architecture, or feature inventory
 Check:
 
 - palette, contrast, saturation, and accent color behavior
+- page/window background, panel/background surfaces, foreground text, muted
+  text, dividers, selected state, hover/focus, disabled, success, warning, and
+  error colors
+- whether foreground text stays clear on every concept-derived background,
+  including translucent, glowing, blurred, dark, light, or image-like surfaces
 - typography scale, weight, density, and rhythm
 - surface language: flat, layered, glass, paper, industrial, playful, editorial, or other material treatment
 - spacing rhythm, border radius, dividers, elevation, shadows, glow, blur, and depth
@@ -135,6 +144,12 @@ Check:
 - whether the visual direction still fits the product type and existing design system
 
 If the style is off but the function is present, fix visual style before making structural or functional changes. Do not chase pixel-perfect placement; preserve the concept's visual language, mood, hierarchy, and material behavior while keeping real workflows intact. After style passes, use `divergence-review.md` to settle functional and structural differences before polishing detailed presentation.
+
+For concept-led work, carry forward the final concept evaluation package across
+all screenshot-analyze-fix loops. Each loop should ask whether the current UI
+still matches the accepted function, hierarchy, density, color roles,
+background/foreground clarity, accent/status usage, typography, spacing, and
+accepted simplifications from the final concept review.
 
 ## Presentation, Readability, And Interaction QA
 
@@ -221,6 +236,7 @@ Report:
 - functional framing and design-language decisions used for QA
 - display element review decisions used for QA
 - candidate search rounds, scoring summary, and final selection rationale
+- final concept evaluation package and whether later UI fixes reused it
 - concept version(s) used and screenshot round(s)
 - screenshots or states inspected
 - post-interaction screenshots or equivalent evidence for material clicks/state changes
@@ -228,5 +244,6 @@ Report:
 - functional walkthrough items checked, fixed, blocked, or skipped, including pointer reachability and expected-vs-actual results
 - visible issues fixed
 - content/localization, application icon/assets, in-UI icon, and motion/light/depth checks performed
+- color/background/foreground and accent/status checks performed
 - states not checked and why
 - remaining visual risks

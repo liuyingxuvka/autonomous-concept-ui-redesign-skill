@@ -2,13 +2,13 @@
 
 Use this when the implemented UI differs from the concept mockup.
 
-Use the functional framing and display element review as the source of truth for what the UI must help the user understand, do, show, hide, or defer. Use the selected concept set as the source of truth for approved visual direction, hierarchy, and intended presentation quality.
+Use the functional framing and display element review as the source of truth for what the UI must help the user understand, do, show, hide, or defer. Use the selected concept set and final concept evaluation package as the source of truth for approved visual direction, hierarchy, color roles, and intended presentation quality.
 
 ## Review Order
 
 Review divergence in this order:
 
-1. **Visual style alignment first.** Compare palette, typography, surface language, spacing rhythm, icon/asset style, motion, light, shadow, and depth before changing routes, feature inventory, or layout architecture.
+1. **Visual style alignment first.** Compare background surfaces, foreground text, accent/status colors, palette, typography, surface language, spacing rhythm, icon/asset style, motion, light, shadow, and depth before changing routes, feature inventory, or layout architecture.
 2. **Functional and structural fit second.** After the style pass, compare both the concept and implementation against the functional framing and display element review: real workflows, approved visible/conditional elements, data, actions, states, functional zones, navigation, and interaction model.
 3. **Presentation, readability, and interaction clarity third.** After function and structure are settled, compare information hierarchy, grouping, scan path, labels, affordances, state clarity, and retained content composition.
 4. **Implementation constraints fourth.** Accept or revise differences caused by accessibility, responsiveness, performance, data density, local design-system limits, or technical constraints.
@@ -37,6 +37,8 @@ Accept the implementation when it:
 Fix the implementation when it:
 
 - misses the concept's visual language, mood, material treatment, typography, color, icon/asset style, or depth cues without a product reason
+- forgets the concept's background surfaces, foreground text treatment, accent
+  color role, state colors, or contrast expectations without a product reason
 - loses the concept's primary hierarchy without a product reason
 - introduces visible overlap, clipping, crowding, or awkward spacing
 - changes the intended surface language into a weaker default look
@@ -79,11 +81,13 @@ Regenerate or revise the application icon, not necessarily the full UI concept, 
 
 ```text
 Concept target/version:
+Final concept evaluation package used:
 Functional framing used:
 Display element decisions used:
 Screenshot state:
 Key differences:
 Visual style alignment:
+Color/background/foreground findings:
 Functional/structural decisions:
 Presentation/readability/interaction findings:
 Accepted differences:
@@ -101,6 +105,6 @@ Next verification screenshot:
 
 ## Practical Rule
 
-Use the concept to protect direction, hierarchy, visual ambition, and readable presentation. Use the real app to protect functionality, content truth, accessibility, and maintainability.
+Use the concept to protect direction, hierarchy, visual ambition, color intent, background/foreground clarity, and readable presentation. Use the real app to protect functionality, content truth, accessibility, and maintainability.
 
 Run at least one post-implementation divergence review. Continue another loop when material differences remain unresolved. Do not finish with "close enough" if the remaining gap affects workflow, readability, content correctness, interaction, motion, or responsiveness.

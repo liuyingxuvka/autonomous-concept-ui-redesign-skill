@@ -1,6 +1,6 @@
 ---
 name: autonomous-concept-ui-redesign
-description: Experimental opt-in orchestration skill for autonomous end-to-end UI redesign work. Use only when the user explicitly asks for autonomous-concept-ui-redesign, an experimental autonomous UI redesign pipeline, or when FlowPilot explicitly selects this strategy. It combines concept-led product/design framing, image-based concept exploration, frontend-design implementation, design-iterator refinement, design-implementation-reviewer deviation review, and geometry/screenshot QA without optional user check-ins.
+description: Experimental opt-in orchestration skill for autonomous end-to-end UI redesign work. Use only when the user explicitly asks for autonomous-concept-ui-redesign, an experimental autonomous UI redesign pipeline, or when FlowPilot explicitly selects this strategy. It combines concept-led product/design framing, image-based concept exploration with concept diagnosis/refinement, final concept evaluation packages, frontend-design implementation, design-iterator refinement, design-implementation-reviewer deviation review, and geometry/screenshot QA without optional user check-ins.
 ---
 
 # Autonomous Concept UI Redesign
@@ -27,9 +27,11 @@ bodies progressively rather than copying their instructions here.
     draft/review, information architecture, content pressure, and QA
     implications.
   - `references/concept-brief.md`: concept prompt contract, visual anchors,
-    app/software icon direction, and selected concept three-layer review.
-  - `references/design-search.md`: first-round candidates, scoring,
-    second-round synthesis, and final concept selection.
+    color/effect contract, app/software icon direction, selected concept
+    three-layer review, and concept refinement before coding.
+  - `references/design-search.md`: first-round candidates, concept diagnosis,
+    scoring, second-round synthesis, readiness checks, final concept
+    evaluation package, and final concept selection.
   - `references/visual-qa-loop.md`: real UI screenshot, pointer walkthrough,
     content/localization, asset, motion, and completion QA.
   - `references/divergence-review.md`: concept-vs-implementation difference
@@ -73,6 +75,10 @@ Default choices:
   name its purpose, allowed locations, intensity, and hierarchy role. Use a
   no-accent UI only when the user explicitly asks, the existing design system
   is clearly neutral-only, or a named product reason makes neutral-only safer.
+- Concept search default: treat generated concept images as editable design
+  hypotheses, not finished instructions. Diagnose function gaps, overload,
+  fake features, unclear states, and implementation risks before selecting or
+  coding from a concept.
 - App/software icon scope: when the product surface is a desktop app, mobile
   app, packaged web app, or branded software artifact, treat the app icon as a
   product identity asset, not an in-UI decoration. Select or create one final
@@ -112,8 +118,15 @@ For `concept_redesign`, perform the built-in concept-led gates:
 - concept brief derived from functional framing and design language;
 - mandatory first-round candidate search when a substantial concept-led
   redesign is in scope;
-- candidate scoring, second-round synthesis, and final concept/app-icon set
-  selection;
+- candidate scoring, concept diagnosis, second-round synthesis, concept
+  refinement, and final concept/app-icon set selection;
+- final concept evaluation package covering retained functions, removed
+  extras, information hierarchy, layout zones, color roles, background and
+  foreground treatment, accent/status colors, typography, spacing, surface
+  language, interaction states, and implementation constraints;
+- concept readiness gate: final concept version must account for required
+  workflows, approved display elements, states, density, non-goals, and known
+  implementation constraints before coding starts;
 - selected concept three-layer gate before coding;
 - selected app/software icon gate when applicable.
 
@@ -121,6 +134,14 @@ Read `references/functional-framing.md` before choosing aesthetic direction or
 generating concept images. Read `references/concept-brief.md` and
 `references/design-search.md` before using `imagegen` for concept or app-icon
 candidates.
+
+Do not treat the first selected concept as only a broad visual direction. If a
+candidate has too many features, hides required controls, invents workflows,
+uses an unsuitable density, or cannot express real states, revise the brief,
+generate a refined concept version, or discard the candidate before
+implementation. The implementation brief should name the final accepted concept
+version and the concept elements that were explicitly removed, simplified, or
+deferred.
 
 For smaller routes, write a compact contract instead:
 
@@ -139,6 +160,9 @@ explicitly in the work brief:
 - design system findings;
 - content plan and layout zones;
 - visual direction or concept target;
+- final concept evaluation package, including function, hierarchy, color,
+  background/foreground, accent/status, typography, spacing, and accepted
+  simplifications to reuse during screenshot comparison;
 - final app/software icon target and required runtime/package bindings when
   applicable;
 - interaction states;
@@ -219,8 +243,17 @@ Run a bounded loop:
 - screenshot after each round;
 - preserve working behavior and do not undo good prior changes.
 
-If the problem is structural, return to the design contract or information
-architecture instead of repeatedly adjusting CSS.
+If the problem is structural or the rendered UI exposes a weak concept target,
+return to the design contract, information architecture, or concept refinement
+gate instead of repeatedly adjusting CSS.
+
+During each refinement round for `concept_redesign`, compare the screenshot
+against both the selected concept image and the final concept evaluation
+package. Reuse the earlier concept judgments instead of re-litigating them:
+required functions, removed extras, hierarchy, density, color roles,
+background/foreground clarity, accent use, status colors, typography, spacing,
+surface language, interaction states, and accepted implementation
+simplifications.
 
 ### 5. Deviation Review
 
@@ -242,6 +275,12 @@ from the selected concept, authoritative reference, accepted screenshot, or
 written visual contract. Compare visual style first, then functional/structural
 fit, then presentation/readability/interaction clarity, then implementation
 constraints.
+
+For concept-led work, the deviation review baseline is not only the image. Use
+the final concept evaluation package as the checklist for what the real UI must
+match or intentionally simplify, especially color roles, background surfaces,
+foreground text clarity, accent behavior, selected/hover/error/success colors,
+and contrast.
 
 ### 6. Geometry And Screenshot QA
 
@@ -283,6 +322,8 @@ must state:
 - route type;
 - assumptions made instead of asking the user;
 - concept mode used or skipped;
+- concept diagnosis/refinement rounds and final accepted concept version;
+- final concept evaluation package and how it was reused during UI iteration;
 - implementation scope;
 - app/software icon target, binding evidence, and any package-icon gaps;
 - design-iterator rounds and outcome;
