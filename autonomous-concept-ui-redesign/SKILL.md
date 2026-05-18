@@ -1,6 +1,6 @@
 ---
 name: autonomous-concept-ui-redesign
-description: Experimental opt-in orchestration skill for autonomous end-to-end UI redesign work. Use only when the user explicitly asks for autonomous-concept-ui-redesign, an experimental autonomous UI redesign pipeline, or when FlowPilot explicitly selects this strategy. It combines concept-led product/design framing, image-based concept exploration with concept diagnosis/refinement, final concept evaluation packages, frontend-design implementation, design-iterator refinement, design-implementation-reviewer deviation review, and geometry/screenshot QA without optional user check-ins.
+description: Experimental opt-in orchestration skill for autonomous end-to-end UI redesign work. Use only when the user explicitly asks for autonomous-concept-ui-redesign, an experimental autonomous UI redesign pipeline, or when FlowPilot explicitly selects this strategy. It combines concept-led product/design framing, conditional FlowGuard UI Flow Structure modeling, image-based concept exploration with concept diagnosis/refinement, final concept evaluation packages, frontend-design implementation, design-iterator refinement, design-implementation-reviewer deviation review, and geometry/screenshot QA without optional user check-ins.
 ---
 
 # Autonomous Concept UI Redesign
@@ -24,8 +24,8 @@ bodies progressively rather than copying their instructions here.
 
 - Built-in references:
   - `references/functional-framing.md`: product job, user task, display element
-    draft/review, information architecture, content pressure, and QA
-    implications.
+    draft/review, FlowGuard model inputs, information architecture, content
+    pressure, duplicate-information/control review, and QA implications.
   - `references/concept-brief.md`: concept prompt contract, visual anchors,
     color/effect contract, app/software icon direction, selected concept
     three-layer review, and concept refinement before coding.
@@ -38,7 +38,12 @@ bodies progressively rather than copying their instructions here.
     classification and loop closure.
   - `references/platform-notes.md`: desktop, high-DPI, canvas, slide, and
     other non-standard rendering surfaces.
+  - `references/run-report-template.md`: final reporting, including
+    FlowGuard gate status, structure contract, and skipped or unresolved model
+    states.
 - Companion skills:
+  - `flowguard-ui-flow-structure`: conditional model-first UI interaction
+    structure gate before concept or implementation work.
   - `imagegen`: bitmap concept and icon candidates when concept search is
     needed.
   - `frontend-design`: implementation and first rendered visual sanity pass.
@@ -68,6 +73,9 @@ Default choices:
 - No Figma: skip Figma-specific comparison and use concept image, prior
   screenshot, current UI, or written design contract as baseline.
 - No concept need: skip imagegen and use a written design contract.
+- No FlowGuard structure risk: skip the FlowGuard UI Structure Gate only with a
+  recorded reason when the task is visual-only and does not alter workflow,
+  state, hierarchy, controls, overlays, navigation, or display ownership.
 - No user-specified iteration count: run 10 design-iterator rounds, maximum 20.
 - No user aesthetic preference: prioritize readability, information density,
   stable layout, low overlap risk, and consistency with the product.
@@ -115,6 +123,10 @@ For `concept_redesign`, perform the built-in concept-led gates:
 - default accent color contract;
 - visual fidelity contract;
 - design language that serves the information architecture;
+- FlowGuard UI Structure Gate preparation: record the candidate controls,
+  displayed information, UI states, navigation paths, overlay states,
+  duplicate/redundant information candidates, duplicate same-level controls,
+  and known model boundaries that the gate must accept, reject, or skip.
 - concept brief derived from functional framing and design language;
 - mandatory first-round candidate search when a substantial concept-led
   redesign is in scope;
@@ -151,6 +163,63 @@ For smaller routes, write a compact contract instead:
 - supported viewport/window sizes;
 - explicit non-goals.
 
+### 2.5 FlowGuard UI Structure Gate
+
+Use `flowguard-ui-flow-structure` after product/design framing and before
+concept brief, imagegen, Figma translation, or frontend implementation when the
+surface has meaningful UI behavior or structure risk.
+
+Trigger the gate when any of these are true:
+
+- the route is `concept_redesign` and the surface has multiple states,
+  controls, menu levels, panels, overlays, or navigation paths;
+- the route is `figma_implementation` or `baseline_alignment` and the work
+  changes controls, state flow, displayed information, hierarchy, overlays, or
+  navigation;
+- the user mentions duplicate information, duplicate buttons, conflicting
+  controls, unclear parent/child hierarchy, unstable toolbars, menus, workflow
+  completeness, or FlowGuard;
+- implementation or iteration later changes controls, states, displayed
+  information, navigation, overlays, or hierarchy enough to invalidate the
+  existing structure contract.
+
+Skip the gate only when the task is visual-only: spacing, color, typography,
+copy, icon polish, or small alignment work with no workflow, state, hierarchy,
+control, overlay, navigation, or display-ownership impact. Record the skip
+reason in the run notes and final verdict.
+
+When triggered, verify the real FlowGuard package before claiming FlowGuard
+use, then build or review:
+
+- a UI interaction model: initial state, states, controls, displayed
+  information, events, transitions, availability, failure/recovery states,
+  terminal states, validation boundaries, and rationale;
+- duplicate information and duplicate same-level control review, with
+  intentional redundancy allowed only when recorded as accessibility,
+  persistent context, summary plus detail, or alternate user vocabulary;
+- a model-derived UI structure contract: parent/child topology, persistent
+  global regions, contextual second-level regions, local third-level controls,
+  stable placement, navigation ownership, event/control ownership, display
+  ownership, overlay hierarchy, validation boundaries, and unresolved states.
+
+Do not continue to visual concept selection or frontend implementation if the
+required UI behavior is too vague to model without inventing product behavior.
+Mark the run `partial` or `blocked` with the missing behavior instead.
+
+Carry the FlowGuard structure contract into:
+
+- the concept brief and final concept evaluation package;
+- the `frontend-design` implementation brief;
+- design-iterator checks whenever screenshots reveal structural drift;
+- design-implementation-reviewer deviation review;
+- geometry QA for modeled states, stable regions, overlays, and control
+  ownership;
+- the final verdict.
+
+FlowGuard owns behavior topology, hierarchy, stable placement, information
+ownership, and redundancy review. It does not choose brand style, palette,
+typography, bitmap concept art, or frontend implementation details.
+
 ### 3. Implementation
 
 Load `frontend-design` and implement from the contract. Pass these inputs
@@ -159,6 +228,7 @@ explicitly in the work brief:
 - target files or components;
 - design system findings;
 - content plan and layout zones;
+- FlowGuard structure contract or recorded FlowGuard skip reason;
 - visual direction or concept target;
 - final concept evaluation package, including function, hierarchy, color,
   background/foreground, accent/status, typography, spacing, and accepted
@@ -166,6 +236,8 @@ explicitly in the work brief:
 - final app/software icon target and required runtime/package bindings when
   applicable;
 - interaction states;
+- model-derived control/display ownership, hierarchy, stable placement,
+  overlays, and redundancy decisions when the FlowGuard gate ran;
 - viewport/window contract;
 - non-goals and preserved behavior;
 - verification expectations.
@@ -244,8 +316,12 @@ Run a bounded loop:
 - preserve working behavior and do not undo good prior changes.
 
 If the problem is structural or the rendered UI exposes a weak concept target,
-return to the design contract, information architecture, or concept refinement
-gate instead of repeatedly adjusting CSS.
+return to the FlowGuard structure contract, design contract, information
+architecture, or concept refinement gate instead of repeatedly adjusting CSS.
+
+If a refinement round materially changes controls, states, displayed
+information, navigation, overlays, or hierarchy, re-run the FlowGuard gate or
+record why the current model-derived structure contract remains valid.
 
 During each refinement round for `concept_redesign`, compare the screenshot
 against both the selected concept image and the final concept evaluation
@@ -266,9 +342,10 @@ Load `design-implementation-reviewer` when a baseline exists:
 - written visual fidelity contract.
 
 Review layout, spacing, typography, color, state behavior, responsive behavior,
-app/software icon realization, and accessibility-visible issues. Classify
-deviations as accepted, fixed, or blocked. When Figma is unavailable, do not
-stop; use the strongest available baseline.
+app/software icon realization, model-derived hierarchy/control/display
+ownership when available, and accessibility-visible issues. Classify deviations
+as accepted, fixed, or blocked. When Figma is unavailable, do not stop; use the
+strongest available baseline.
 
 Read `references/divergence-review.md` when the rendered UI materially differs
 from the selected concept, authoritative reference, accepted screenshot, or
@@ -296,6 +373,8 @@ Minimum checks:
 - fixed headers/footers do not hide content;
 - popovers, menus, dialogs, tooltips, and drawers stay in bounds;
 - key states work at desktop, normal, compact, and any required mobile sizes;
+- modeled FlowGuard states, stable regions, overlays, and control/display
+  owners remain visible, reachable, or intentionally progressive;
 - high-DPI or scaled Windows evidence includes logical size, physical pixels
   when available, and screenshot dimensions.
 - applicable desktop/mobile/package app icons are visible in the real platform
@@ -323,6 +402,9 @@ must state:
 - assumptions made instead of asking the user;
 - concept mode used or skipped;
 - concept diagnosis/refinement rounds and final accepted concept version;
+- FlowGuard gate status, model id, structure contract summary, skip reason,
+  revalidation notes, duplicate-information decisions, and duplicate-control
+  decisions;
 - final concept evaluation package and how it was reused during UI iteration;
 - implementation scope;
 - app/software icon target, binding evidence, and any package-icon gaps;

@@ -10,7 +10,7 @@
 </p>
 <!-- README HERO END -->
 
-Version: 0.1.1
+Version: 0.1.2
 
 Language note: This README uses an English-first bilingual structure. The Chinese section follows as a full mirror for Chinese readers.
 
@@ -26,13 +26,14 @@ This repository contains a standalone Codex skill for substantial UI redesign wo
 2. Define functional goals, user tasks, required data, required actions, required states, and non-goals.
 3. Draft and review display elements before choosing visual style.
 4. Set information architecture, presentation mode, content pressure, viewport/window contract, palette contract, and visual fidelity contract.
-5. Generate, diagnose, score, and refine multiple UI concept candidates when concept search is warranted.
-6. Select a final concept version and preserve its function, hierarchy, density, color, background/foreground, accent/status, typography, spacing, state, and implementation-simplification decisions as a reusable evaluation package.
-7. Generate and gate app/software icon candidates when the product needs a desktop, mobile, packaged web, browser extension, or branded software identity.
-8. Implement inside the existing architecture with `frontend-design`.
-9. Iterate from rendered screenshots with `design-iterator` or a manual bounded loop while reusing the final concept evaluation package.
-10. Review implementation-vs-baseline deviations with `design-implementation-reviewer` or a manual equivalent.
-11. Prove geometry, screenshot trust, pointer reachability, content/localization, app icon identity, and remaining risks before claiming completion.
+5. Run a conditional FlowGuard UI Flow Structure gate before concept or implementation work when behavior, hierarchy, state, overlay, navigation, display ownership, or duplicate-information/control risk exists.
+6. Generate, diagnose, score, and refine multiple UI concept candidates when concept search is warranted.
+7. Select a final concept version and preserve its function, FlowGuard structure contract, hierarchy, density, color, background/foreground, accent/status, typography, spacing, state, and implementation-simplification decisions as a reusable evaluation package.
+8. Generate and gate app/software icon candidates when the product needs a desktop, mobile, packaged web, browser extension, or branded software identity.
+9. Implement inside the existing architecture with `frontend-design`.
+10. Iterate from rendered screenshots with `design-iterator` or a manual bounded loop while reusing the final concept evaluation package.
+11. Review implementation-vs-baseline deviations with `design-implementation-reviewer` or a manual equivalent.
+12. Prove geometry, screenshot trust, pointer reachability, content/localization, FlowGuard structure preservation, app icon identity, and remaining risks before claiming completion.
 
 The concept-led front half is built into this skill. It does **not** require the older `concept-led-ui-redesign` skill.
 
@@ -44,6 +45,7 @@ Use this skill for:
 - desktop, web, mobile, packaged app, dashboard, or tool surfaces where screenshot QA matters;
 - app/software icon work that must become real window, taskbar, tray, dock, shortcut, installer, or package identity;
 - redesigns where concept candidates should be tested before implementation;
+- redesigns where controls, displayed information, UI states, menu levels, overlays, navigation, or duplicate/overlapping information need a model-first structure contract;
 - FlowPilot UI routes that need non-interactive design execution.
 
 Do not use it for:
@@ -59,6 +61,7 @@ The standalone skill owns the concept-led framing and QA references internally. 
 
 | Companion skill | Role | Source |
 | --- | --- | --- |
+| `flowguard-ui-flow-structure` | Conditional UI interaction modeling, parent/child topology, menu/control/display ownership, stable placement, overlays, and duplicate information/control review before visual work. | [`liuyingxuvka/FlowGuard`](https://github.com/liuyingxuvka/FlowGuard) |
 | `frontend-design` | Implementation and first rendered visual sanity pass. | [`anthropics/skills/skills/frontend-design`](https://github.com/anthropics/skills/tree/main/skills/frontend-design) |
 | `design-iterator` | Bounded screenshot-analyze-fix loops after first render. | [`ratacat/claude-skills/skills/design-iterator`](https://github.com/ratacat/claude-skills/tree/main/skills/design-iterator) |
 | `design-implementation-reviewer` | Implementation-vs-baseline deviation review. | [`ratacat/claude-skills/skills/design-implementation-reviewer`](https://github.com/ratacat/claude-skills/tree/main/skills/design-implementation-reviewer) |
@@ -106,6 +109,10 @@ autonomous-concept-ui-redesign/
     visual-qa-loop.md
   scripts/
     app_icon_asset_check.py
+.flowguard/
+  autonomous_ui_structure_gate/run_checks.py
+openspec/
+  changes/add-flowguard-ui-structure-gate/
 ```
 
 ### Public Boundary
@@ -126,13 +133,14 @@ See `CHANGELOG.md`.
 2. 定义功能目标、用户任务、必需数据、必需操作、必需状态和非目标。
 3. 先草拟并审查显示元素，再选择视觉风格。
 4. 确定信息架构、呈现模式、内容压力、窗口/视口合同、调色板合同和视觉保真合同。
-5. 需要概念搜索时，生成、诊断、评分并精修多组 UI concept 候选。
-6. 选出最终 concept 版本，并把功能、层级、密度、颜色、背景/前景、重点色/状态色、字体、间距、状态和实现简化决策保存成可复用评价包。
-7. 当产品需要桌面、移动端、打包 Web、浏览器扩展或品牌软件身份时，生成并检查 app/software icon 候选。
-8. 使用 `frontend-design` 在现有架构内实现。
-9. 使用 `design-iterator` 或手动有限循环，根据渲染截图迭代，并持续复用最终 concept 评价包。
-10. 使用 `design-implementation-reviewer` 或手动等价流程审查实现与基准的偏差。
-11. 在声明完成前，证明几何布局、截图可信度、鼠标可达性、内容/本地化、真实应用图标身份和剩余风险。
+5. 当行为、层级、状态、覆盖层、导航、显示归属或重复信息/重复控件有风险时，在概念或实现前运行条件式 FlowGuard UI Flow Structure 门禁。
+6. 需要概念搜索时，生成、诊断、评分并精修多组 UI concept 候选。
+7. 选出最终 concept 版本，并把功能、FlowGuard 结构合同、层级、密度、颜色、背景/前景、重点色/状态色、字体、间距、状态和实现简化决策保存成可复用评价包。
+8. 当产品需要桌面、移动端、打包 Web、浏览器扩展或品牌软件身份时，生成并检查 app/software icon 候选。
+9. 使用 `frontend-design` 在现有架构内实现。
+10. 使用 `design-iterator` 或手动有限循环，根据渲染截图迭代，并持续复用最终 concept 评价包。
+11. 使用 `design-implementation-reviewer` 或手动等价流程审查实现与基准的偏差。
+12. 在声明完成前，证明几何布局、截图可信度、鼠标可达性、内容/本地化、FlowGuard 结构保留、真实应用图标身份和剩余风险。
 
 concept-led 的前半段已经内建在这个 skill 中。它**不再需要**旧的 `concept-led-ui-redesign` skill。
 
@@ -144,6 +152,7 @@ concept-led 的前半段已经内建在这个 skill 中。它**不再需要**旧
 - 需要截图 QA 的桌面、Web、移动端、打包应用、dashboard 或工具界面；
 - app/software icon 必须真正成为窗口、任务栏、托盘、dock、快捷方式、安装器或包身份的工作；
 - 实现前需要先比较 concept 候选的重设计；
+- 需要在视觉设计前先检查控件、显示信息、UI 状态、菜单层级、覆盖层、导航或重复/重叠信息的重设计；
 - 需要非交互式设计执行的 FlowPilot UI 路线。
 
 不适合：
@@ -159,6 +168,7 @@ concept-led 的前半段已经内建在这个 skill 中。它**不再需要**旧
 
 | companion skill | 作用 | 来源 |
 | --- | --- | --- |
+| `flowguard-ui-flow-structure` | 在视觉工作前做条件式 UI 交互建模、父子拓扑、菜单/控件/显示归属、稳定布局、覆盖层和重复信息/重复控件审查。 | [`liuyingxuvka/FlowGuard`](https://github.com/liuyingxuvka/FlowGuard) |
 | `frontend-design` | 实现和第一次渲染视觉 sanity pass。 | [`anthropics/skills/skills/frontend-design`](https://github.com/anthropics/skills/tree/main/skills/frontend-design) |
 | `design-iterator` | 首次渲染后的有限轮截图-分析-修复循环。 | [`ratacat/claude-skills/skills/design-iterator`](https://github.com/ratacat/claude-skills/tree/main/skills/design-iterator) |
 | `design-implementation-reviewer` | 实现与基准之间的偏差审查。 | [`ratacat/claude-skills/skills/design-implementation-reviewer`](https://github.com/ratacat/claude-skills/tree/main/skills/design-implementation-reviewer) |
@@ -206,6 +216,10 @@ autonomous-concept-ui-redesign/
     visual-qa-loop.md
   scripts/
     app_icon_asset_check.py
+.flowguard/
+  autonomous_ui_structure_gate/run_checks.py
+openspec/
+  changes/add-flowguard-ui-structure-gate/
 ```
 
 ### 公开边界

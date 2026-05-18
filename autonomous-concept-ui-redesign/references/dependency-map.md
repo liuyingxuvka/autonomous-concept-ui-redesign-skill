@@ -3,8 +3,9 @@
 This experimental skill is now standalone for the concept-led UI redesign
 front half. Product inspection, functional framing, display element review,
 information architecture, concept search, selected concept review, divergence
-review, platform screenshot discipline, and app/software icon gating live in
-this skill's own `references/` and `scripts/` files.
+review, FlowGuard UI structure gate routing, platform screenshot discipline,
+and app/software icon gating live in this skill's own `references/` and
+`scripts/` files.
 
 Do not require or load the old `concept-led-ui-redesign` skill.
 
@@ -12,8 +13,9 @@ Do not require or load the old `concept-led-ui-redesign` skill.
 
 - `references/functional-framing.md`
   - Role: product job, user task, required data/actions/states, non-goals,
-    display element draft/review, information architecture, presentation mode,
-    content pressure, and QA implications.
+    display element draft/review, FlowGuard UI model inputs, information
+    architecture, presentation mode, content pressure, duplicate information
+    and control review, and QA implications.
 - `references/concept-brief.md`
   - Role: imagegen concept prompt contract, visual anchors, color/effect
     contract, functional zones, content/localization constraints, app icon
@@ -39,6 +41,17 @@ Do not require or load the old `concept-led-ui-redesign` skill.
 
 ## Companion Skill Dependencies
 
+- `flowguard-ui-flow-structure`
+  - Expected path:
+    `$CODEX_HOME/skills/flowguard-ui-flow-structure/SKILL.md`
+    or `~/.codex/skills/flowguard-ui-flow-structure/SKILL.md`
+  - Source used for this install:
+    `https://github.com/liuyingxuvka/FlowGuard`
+  - Role: conditional model-first UI interaction structure gate before concept
+    search, imagegen, Figma translation, or frontend implementation. It owns
+    UI interaction modeling, parent/child topology, stable regions, menu
+    levels, control/event/display ownership, overlays, duplicate information,
+    duplicate same-level controls, and structure-contract propagation.
 - `imagegen`
   - Role: generated bitmap concept images and app/software icon candidates.
   - Host source: Codex built-in/system skill in this environment. Treat this as
@@ -66,6 +79,11 @@ Do not require or load the old `concept-led-ui-redesign` skill.
 
 ## Missing Dependency Behavior
 
+- Missing `flowguard-ui-flow-structure`: continue only for visual-only
+  `minor_ui_fix` work that has no workflow, state, hierarchy, control,
+  overlay, navigation, or display-ownership risk. For substantial redesigns or
+  explicit FlowGuard requests, mark the run `blocked` or `partial`; do not
+  replace FlowGuard with prose-only modeling.
 - Missing `frontend-design`: stop as `blocked`; implementation skill is
   required.
 - Missing `design-iterator`: continue with manual bounded iteration and mark
@@ -79,6 +97,10 @@ Do not require or load the old `concept-led-ui-redesign` skill.
 The built-in concept-led references are part of this skill. If one of them is
 missing from the installed skill, treat the installed skill as stale or broken
 rather than falling back to the old `concept-led-ui-redesign` dependency.
+
+If FlowGuard is present but the real `flowguard` package cannot be imported,
+do not claim a FlowGuard pass. Record the exact import failure, skip only when
+the route is visual-only, and otherwise mark the run `partial` or `blocked`.
 
 ## Non-Interactive Override
 

@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.2 - 2026-05-18
+
+Added conditional FlowGuard UI Flow Structure integration.
+
+- Added a FlowGuard UI Structure Gate before concept search, image generation,
+  or frontend implementation when behavior, hierarchy, state, overlay,
+  navigation, display ownership, or duplicate-information/control risk exists.
+- Required triggered runs to produce a UI interaction model, model-derived UI
+  structure contract, duplicate information review, and duplicate same-level
+  control review before visual work proceeds.
+- Propagated the FlowGuard structure contract into concept briefs, final
+  concept evaluation packages, frontend implementation briefs, iteration,
+  deviation review, geometry QA, and final reporting.
+- Added a focused `.flowguard` regression check for the skill contract and
+  FlowGuard duplicate-detection behavior.
+
 ## 0.1.1 - 2026-05-11
 
 Refined the concept-led UI workflow before implementation.

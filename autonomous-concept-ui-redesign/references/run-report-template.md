@@ -18,6 +18,14 @@ Concept:
 - functional_framing:
 - display_element_review:
 - information_architecture:
+- flowguard_gate: triggered | skipped | blocked
+- flowguard_skip_reason:
+- flowguard_model_id:
+- flowguard_structure_contract:
+- flowguard_revalidation:
+- duplicate_information_decisions:
+- duplicate_control_decisions:
+- unresolved_model_states:
 - design_language:
 - candidate_search_rounds:
 - concept_diagnosis_summary:
@@ -64,6 +72,7 @@ Deviation Review:
 - major_deviations:
 - visual_style_alignment:
 - functional_structure_fit:
+- flowguard_contract_alignment:
 - presentation_readability_interaction:
 - accepted_deviations:
 - fixed_deviations:
@@ -71,6 +80,9 @@ Deviation Review:
 Geometry QA:
 - sizes_checked:
 - native_desktop_capture:
+- flowguard_modeled_states_checked:
+- flowguard_stable_regions_checked:
+- flowguard_overlay_and_control_ownership_checked:
 - text_overflow:
 - overlap:
 - horizontal_scroll:

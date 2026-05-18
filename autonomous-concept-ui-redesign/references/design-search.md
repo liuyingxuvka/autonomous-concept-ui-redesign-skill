@@ -1,6 +1,9 @@
 # Design Search
 
-Use this after functional framing and design language, before implementation. The goal is to search across several UI concept and app icon directions instead of accepting the first attractive image.
+Use this after functional framing, the conditional FlowGuard UI Structure Gate,
+and design language, before implementation. The goal is to search across
+several UI concept and app icon directions instead of accepting the first
+attractive image.
 
 ## Search Rules
 
@@ -41,6 +44,7 @@ Score each candidate set from 1 to 5 and write one sentence of evidence for each
 Candidate:
 Functional layout:
 Required workflow/state coverage:
+FlowGuard structure fit:
 Display element value/load:
 Excess or invented elements:
 Interaction clarity:
@@ -60,14 +64,16 @@ For products without an app icon surface, mark app icon dimensions as not applic
 ## Concept Diagnosis And Refinement
 
 After first-round generation, and again before final selection, diagnose the
-actual concept images against the functional framing. Do this even when a
-candidate looks visually attractive.
+actual concept images against the functional framing and the FlowGuard
+structure contract when the gate ran. Do this even when a candidate looks
+visually attractive.
 
 For each candidate, record:
 
 ```text
 Candidate/version:
 Functional completeness: <required workflows, data, actions, and states present or missing>
+FlowGuard structure fit: <parent/child topology, global/contextual/local controls, display ownership, overlays, redundancy decisions respected or violated>
 Feature load: <extra panels, fake metrics, invented workflows, duplicate controls, decorative clutter>
 Display element decisions: <always visible, conditional, hidden/removed respected or violated>
 Interaction/state clarity: <navigation, selection, filters, empty/error/loading/long-content states>
@@ -118,6 +124,7 @@ The selection rationale must cover:
 - why this direction best serves the primary user task
 - why its display element choices are valuable and not overloaded
 - why its structure and interaction model are clear
+- why it respects the FlowGuard structure contract when the gate ran
 - why its information hierarchy is readable
 - why its aesthetic language fits the product
 - why the app icon matches the UI and remains readable at small sizes, when applicable
@@ -126,6 +133,9 @@ The selection rationale must cover:
 Before implementation, the selected set must pass a readiness check:
 
 - required workflows, data, actions, and states are accounted for
+- model-derived hierarchy, stable regions, control/display ownership, overlay
+  boundaries, and redundancy decisions are respected when the FlowGuard gate
+  ran
 - approved visible, conditional, hidden, and removed display elements are respected
 - extra generated features, charts, metrics, tabs, or decorative regions are removed or explicitly rejected
 - density and hierarchy fit the product's real use, not just the concept image
@@ -143,6 +153,7 @@ the artifact that implementation and screenshot iteration must reuse:
 
 ```text
 Final concept version:
+FlowGuard structure contract used:
 Functions and workflows to preserve:
 Elements removed as extra, fake, duplicate, or decorative:
 Information hierarchy and layout zones:

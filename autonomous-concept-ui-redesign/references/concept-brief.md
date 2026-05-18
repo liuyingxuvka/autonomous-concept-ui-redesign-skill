@@ -12,6 +12,10 @@ Complete functional framing first. The concept brief should inherit:
 - required content, data, actions, and states
 - approved display elements: always visible, conditional, hidden/removed, and known load risks
 - functional zones, region priority, navigation path, and interaction model
+- FlowGuard structure contract when triggered: model-derived hierarchy,
+  global/contextual/local control ownership, event ownership, display
+  ownership, stable regions, overlays, redundancy decisions, unresolved states,
+  and revalidation notes
 - presentation mode: table, cards, split panel, inspector, dashboard, timeline, canvas, form, or hybrid
 - content pressure: density, long labels, multilingual copy, locale formats, and responsive risks
 - non-goals and fake-feature exclusions
@@ -41,6 +45,7 @@ Asset type: concept mockup for an existing product UI redesign
 Product context: <what the app/tool does>
 Primary user/job: <who uses this and what they need to accomplish>
 Functional framing: <required content/data/actions/states, zones, interaction model, presentation mode>
+FlowGuard structure contract: <triggered/skipped; model id; hierarchy; regions; control/display ownership; overlays; duplicate information/control decisions; unresolved states>
 Display element decisions: <always visible, conditional, hidden/removed, value/load risks>
 Existing functionality that must remain visible: <real workflows, controls, data>
 Current UI problem: <why redesign is needed>
@@ -64,6 +69,11 @@ Output: polished high-fidelity raster concept candidate from imagegen, not a mar
 ## Prompt Rules
 
 - Bind every major visual region to a real product function from the functional framing.
+- Bind every major visual region to the FlowGuard structure contract when the
+  gate ran. Do not let an attractive concept move persistent/global controls
+  into local panels, hide required recovery controls, duplicate same-level
+  actions, or split one semantic display across regions without a recorded
+  redundancy rationale.
 - Generate candidates through `design-search.md`: at least three distinct first-round concept sets, diagnosis, scoring, second-round synthesis, concept refinement, readiness check, and final selection before coding.
 - Ask each candidate for one coherent screen, not a collage of variants.
 - Prefer layout, hierarchy, and surface quality over detailed fake copy.
@@ -91,6 +101,9 @@ Ask:
 
 - Did the image invent workflows, charts, AI features, tabs, or metrics that are not in scope?
 - Did it hide a required action or data region?
+- Does it contradict the FlowGuard structure contract's parent/child topology,
+  stable placement, control/display ownership, overlay hierarchy, or redundancy
+  decisions?
 - Did it make density too low for a workflow-heavy app?
 - Did it turn a tool into a landing page?
 - Does it contradict known technical constraints?
@@ -109,6 +122,7 @@ Then decide what happens to the concept before coding:
 
 ```text
 Final concept version:
+FlowGuard structure contract used:
 Keep exactly:
 Keep as direction, not literal layout:
 Remove as fake, duplicate, decorative, or overloaded:
