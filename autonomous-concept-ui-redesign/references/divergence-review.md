@@ -119,3 +119,13 @@ Next verification screenshot:
 Use the concept to protect direction, hierarchy, visual ambition, color intent, background/foreground clarity, and readable presentation. Use the real app to protect functionality, content truth, accessibility, and maintainability.
 
 Run at least one post-implementation divergence review. Continue another loop when material differences remain unresolved. Do not finish with "close enough" if the remaining gap affects workflow, readability, content correctness, interaction, motion, or responsiveness.
+
+Record each accepted difference in the final integrated acceptance ledger as
+`accepted_deviation` with evidence and rationale. A divergence can be accepted
+only when it does not weaken the final user outcome and preserves or improves
+the user outcome for a product,
+accessibility, responsiveness, content-density, real-data, or design-system
+reason. If a difference violates the FlowGuard structure contract, hides a
+required workflow, weakens readability, or lacks current screenshot/interaction
+evidence, it must downgrade final acceptance to `partial` or `blocked` rather
+than being treated as a harmless visual variation.

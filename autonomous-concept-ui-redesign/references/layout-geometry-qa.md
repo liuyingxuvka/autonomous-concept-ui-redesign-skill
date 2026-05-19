@@ -84,6 +84,13 @@ For each material screen or state:
   styling.
 - If a product intentionally uses two-dimensional layouts, record the exception
   and verify each cell/item still has a usable access path.
+- Geometry QA feeds the final integrated acceptance ledger. Missing, stale, or
+  untrusted geometry evidence, unresolved overlap/clipping, unreachable
+  controls, popup bounds failures, or an app-icon identity surface gap must
+  downgrade final acceptance to `partial` or `blocked`.
+- Any later layout, component, content, control, overlay, responsive, or app
+  icon change stales affected geometry evidence until the impacted state is
+  rechecked or explicitly scoped as unchanged.
 
 ## Report Fields
 
@@ -95,6 +102,7 @@ Record:
 - checked states;
 - FlowGuard structure contract checked or skipped;
 - app icon identity surfaces checked when applicable;
+- final integrated acceptance ledger row status;
 - geometry failures found;
 - fixes made;
 - unresolved risks.

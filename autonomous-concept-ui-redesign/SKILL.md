@@ -391,6 +391,80 @@ Read `references/visual-qa-loop.md` before declaring visual work complete. Read
 especially desktop apps, canvas/custom drawing, slides, native widgets, or
 high-DPI Windows captures.
 
+### 6.5 Final Integrated Acceptance Gate
+
+Before the final verdict, build a parent-owned final acceptance ledger. The
+orchestrator owns this ledger; companion skills keep their own detailed
+standards. Do not copy every child checklist into the final report, but do map
+each applicable child-skill gate to evidence, freshness, status, and verdict
+impact.
+
+Ledger rows must cover the gates that applied to the run:
+
+- FlowGuard UI structure gate: model evidence, structure contract, journey or
+  scoped-coverage status when complete app-level UI coverage is claimed, UI
+  text hierarchy blueprint, implementation validation when implemented/runnable
+  UI completion is claimed, revalidation after structural drift,
+  duplicate-information decisions, and duplicate-control decisions.
+- concept framing/search/readiness: functional framing, display element review,
+  candidate search or waiver, selected concept version, final concept
+  evaluation package, rejected extras, and accepted simplifications.
+- frontend implementation: files or components changed, preserved behavior,
+  first rendered evidence, and known implementation constraints.
+- design iteration: rounds run or justified skip, issues fixed, screenshot
+  evidence, and any structural drift that required FlowGuard revalidation.
+- deviation review: baseline, major deviations, accepted deviations, fixed
+  deviations, model-derived hierarchy/control/display ownership alignment, and
+  unresolved differences.
+- functional walkthrough: changed and adjacent controls exercised, expected vs.
+  actual result, pointer or keyboard reachability, and post-interaction
+  evidence.
+- geometry and screenshot QA: viewport/window sizes, screenshot trust,
+  overflow/overlap/popup/fixed-region results, high-DPI notes, and modeled state
+  coverage.
+- content, localization, motion, assets, in-UI icons, and app/software icon
+  realization when those surfaces are in scope.
+
+Use only these ledger statuses:
+
+- `pass`: current evidence satisfies the owning gate.
+- `accepted_deviation`: a difference remains but has current evidence, a clear
+  product/accessibility/content-density/design-system reason, and no weakening
+  of the final user outcome.
+- `skipped_with_reason`: the gate was not applicable or safely skipped for the
+  route, with the reason recorded.
+- `partial`: useful work exists but required evidence is missing, stale,
+  untrusted, incomplete, or not strong enough for release confidence.
+- `blocked`: a required gate failed or cannot be completed without a real
+  blocker being resolved.
+
+Hard downgrade rules:
+
+- A final `pass` requires every triggered required gate to be `pass`,
+  `accepted_deviation`, or `skipped_with_reason` with a valid route-specific
+  reason.
+- Reviewer output alone is not enough for final `pass` when FlowGuard,
+  concept-readiness, functional walkthrough, geometry, screenshot, or app-icon
+  evidence is required and missing.
+- FlowGuard output alone is not enough for final `pass` when concept,
+  implementation, screenshot, geometry, deviation-review, or app-icon evidence
+  is required and missing.
+- If the FlowGuard gate was triggered but the model, structure contract,
+  duplicate/redundancy decisions, journey coverage for complete app-level UI
+  claims, text hierarchy blueprint, implementation validation for
+  implemented/runnable UI claims, or revalidation notes are missing or stale,
+  the final status is `partial` or `blocked`.
+- If rendered evidence is missing, untrusted, wrong-surface, stale, or shows
+  unresolved overlap, clipping, unreachable controls, popup bounds failures, or
+  hidden required controls, the final status is `partial` or `blocked`.
+- If design iteration changes controls, states, displayed information,
+  navigation, overlays, hierarchy, or app icon identity after earlier evidence,
+  affected FlowGuard, deviation, functional, geometry, and screenshot evidence is
+  stale until revalidated or explicitly scoped as unchanged.
+- If an applicable app/software icon is only visible inside the UI and not bound
+  to the real platform identity surface, the final status is `partial` or
+  `blocked`.
+
 ### 7. Final Verdict
 
 The orchestrator, not any sibling skill, decides completion.
@@ -411,11 +485,13 @@ must state:
 - design-iterator rounds and outcome;
 - deviation review baseline and result;
 - geometry QA result;
+- final acceptance ledger result and any downgrade reasons;
 - screenshot evidence;
 - native desktop screenshot trust notes when applicable;
 - remaining risks or skipped states;
 - final status: `pass`, `partial`, or `blocked`.
 
-Do not claim completion when geometry QA, app-icon realization for applicable
-software artifacts, or required rendered evidence is missing. If evidence cannot
-be produced, return `partial` or `blocked` with the specific blocker.
+Do not claim completion when the final acceptance ledger downgrades the run, or
+when geometry QA, app-icon realization for applicable software artifacts, or
+required rendered evidence is missing. If evidence cannot be produced, return
+`partial` or `blocked` with the specific blocker.

@@ -229,6 +229,25 @@ If the screenshot method itself is defective, fix the capture method first. Do n
 
 If functional click-through or real screenshots show that the concept was too vague, too decorative, missing states, or incompatible with real content, revise the concept brief or regenerate the concept before continuing the next visual pass.
 
+## Final Acceptance Handoff
+
+Visual QA feeds the final integrated acceptance ledger. It provides screenshot,
+state, walkthrough, content, asset, motion, and visual-risk evidence, but it
+does not replace FlowGuard, concept-readiness, deviation-review, geometry,
+app-icon, or functional-walkthrough evidence owned by those gates.
+
+Before reporting visual QA as `pass`, confirm the captured evidence is current
+for the final UI. If later fixes change controls, states, navigation, overlays,
+layout hierarchy, app icon identity, or screenshot trust, mark the affected
+visual QA row as stale until the changed state is recaptured or explicitly
+scoped out.
+
+Treat these as hard final-acceptance failures unless fixed or downgraded with a
+specific blocker: wrong-window or cropped screenshots, no walkthrough of changed
+and adjacent controls, missing post-interaction evidence for material state
+changes, stale screenshots after later UI edits, hidden runtime errors, and
+pointer/keyboard paths that do not match the visible control.
+
 ## Reporting
 
 Report:

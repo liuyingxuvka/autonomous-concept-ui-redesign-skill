@@ -22,6 +22,9 @@ Concept:
 - flowguard_skip_reason:
 - flowguard_model_id:
 - flowguard_structure_contract:
+- flowguard_journey_coverage:
+- flowguard_text_hierarchy_blueprint:
+- flowguard_implementation_validation:
 - flowguard_revalidation:
 - duplicate_information_decisions:
 - duplicate_control_decisions:
@@ -99,6 +102,22 @@ Evidence:
 - content_localization_checks:
 - asset_motion_depth_checks:
 - skipped_states:
+
+Integrated Acceptance:
+- ledger_rows:
+  - gate: <flowguard_ui_structure | concept_readiness | frontend_implementation | design_iteration | deviation_review | functional_walkthrough | geometry_screenshot_qa | content_localization | motion_assets | app_icon_realization>
+    triggered: yes | no
+    status: pass | accepted_deviation | skipped_with_reason | partial | blocked
+    evidence:
+    evidence_freshness: current | stale | not_run | not_applicable
+    evidence_version_or_timestamp:
+    skip_or_deviation_reason:
+    final_verdict_impact: none | downgrade_to_partial | downgrade_to_blocked
+- child_skill_standards_referenced:
+- accepted_deviations:
+- justified_skips:
+- stale_or_missing_evidence:
+- final_verdict_downgrades:
 
 Final:
 - verdict: pass | partial | blocked

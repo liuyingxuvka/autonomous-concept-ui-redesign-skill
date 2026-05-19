@@ -93,6 +93,12 @@ Do not require or load the old `concept-led-ui-redesign` skill.
 - Missing `imagegen`: skip concept bitmap generation only if the user did not
   explicitly require concept images and the route can use a written visual
   contract or authoritative reference; otherwise mark `partial` or `blocked`.
+- Final integrated acceptance cannot be replaced by any single companion skill.
+  Reviewer output, FlowGuard output, visual QA, or geometry evidence can each
+  satisfy its own ledger row, but none can by itself prove the whole run. A
+  missing companion skill may use a manual equivalent only when that equivalent
+  records the same evidence, freshness, skip/deviation rationale, and
+  final-verdict impact; otherwise the final run is `partial` or `blocked`.
 
 The built-in concept-led references are part of this skill. If one of them is
 missing from the installed skill, treat the installed skill as stale or broken

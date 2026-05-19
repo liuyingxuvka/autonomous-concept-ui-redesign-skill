@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.3 - 2026-05-19
+
+Added parent-owned final integrated acceptance.
+
+- Added a final integrated acceptance gate before the final verdict so the
+  orchestrator maps child-skill gates to evidence, freshness, status, and final
+  verdict impact.
+- Added explicit ledger statuses: `pass`, `accepted_deviation`,
+  `skipped_with_reason`, `partial`, and `blocked`.
+- Added hard downgrade rules so reviewer-only, FlowGuard-only, stale,
+  untrusted screenshot, unresolved geometry, and in-UI-only app icon evidence
+  cannot produce a final `pass`.
+- Updated final reporting, visual QA, divergence review, and layout geometry QA
+  references to feed the integrated acceptance ledger.
+- Added a focused `.flowguard` regression check for final acceptance ledger
+  behavior and known-bad downgrade hazards.
+- Added a release-process FlowGuard check to keep validation evidence fresh
+  before install sync, commit, tag, and GitHub release.
+
 ## 0.1.2 - 2026-05-18
 
 Added conditional FlowGuard UI Flow Structure integration.

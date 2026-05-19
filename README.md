@@ -10,7 +10,7 @@
 </p>
 <!-- README HERO END -->
 
-Version: 0.1.2
+Version: 0.1.3
 
 Language note: This README uses an English-first bilingual structure. The Chinese section follows as a full mirror for Chinese readers.
 
@@ -34,6 +34,7 @@ This repository contains a standalone Codex skill for substantial UI redesign wo
 10. Iterate from rendered screenshots with `design-iterator` or a manual bounded loop while reusing the final concept evaluation package.
 11. Review implementation-vs-baseline deviations with `design-implementation-reviewer` or a manual equivalent.
 12. Prove geometry, screenshot trust, pointer reachability, content/localization, FlowGuard structure preservation, app icon identity, and remaining risks before claiming completion.
+13. Build a final integrated acceptance ledger so child-skill hard gates, evidence freshness, justified skips, accepted deviations, and final `pass` / `partial` / `blocked` downgrades are decided by the orchestrator.
 
 The concept-led front half is built into this skill. It does **not** require the older `concept-led-ui-redesign` skill.
 
@@ -111,8 +112,11 @@ autonomous-concept-ui-redesign/
     app_icon_asset_check.py
 .flowguard/
   autonomous_ui_structure_gate/run_checks.py
+  final_integrated_acceptance_gate/run_checks.py
+  release_process_flow/run_checks.py
 openspec/
   changes/add-flowguard-ui-structure-gate/
+  changes/add-final-integrated-acceptance-gate/
 ```
 
 ### Public Boundary
@@ -141,6 +145,7 @@ See `CHANGELOG.md`.
 10. 使用 `design-iterator` 或手动有限循环，根据渲染截图迭代，并持续复用最终 concept 评价包。
 11. 使用 `design-implementation-reviewer` 或手动等价流程审查实现与基准的偏差。
 12. 在声明完成前，证明几何布局、截图可信度、鼠标可达性、内容/本地化、FlowGuard 结构保留、真实应用图标身份和剩余风险。
+13. 建立最终综合验收账本，由总编排技能统一判断子技能硬性门禁、证据新鲜度、合理跳过、可接受偏差，以及最终 `pass` / `partial` / `blocked` 降级。
 
 concept-led 的前半段已经内建在这个 skill 中。它**不再需要**旧的 `concept-led-ui-redesign` skill。
 
@@ -218,8 +223,11 @@ autonomous-concept-ui-redesign/
     app_icon_asset_check.py
 .flowguard/
   autonomous_ui_structure_gate/run_checks.py
+  final_integrated_acceptance_gate/run_checks.py
+  release_process_flow/run_checks.py
 openspec/
   changes/add-flowguard-ui-structure-gate/
+  changes/add-final-integrated-acceptance-gate/
 ```
 
 ### 公开边界
