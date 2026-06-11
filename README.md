@@ -10,7 +10,7 @@
 </p>
 <!-- README HERO END -->
 
-Version: 0.1.3
+Version: 0.1.4
 
 Language note: This README uses an English-first bilingual structure. The Chinese section follows as a full mirror for Chinese readers.
 
@@ -35,6 +35,7 @@ This repository contains a standalone Codex skill for substantial UI redesign wo
 11. Review implementation-vs-baseline deviations with `design-implementation-reviewer` or a manual equivalent.
 12. Prove geometry, screenshot trust, pointer reachability, content/localization, FlowGuard structure preservation, app icon identity, and remaining risks before claiming completion.
 13. Build a final integrated acceptance ledger so child-skill hard gates, evidence freshness, justified skips, accepted deviations, and final `pass` / `partial` / `blocked` downgrades are decided by the orchestrator.
+14. Run the final ledger checker when a structured ledger exists, so missing, stale, partial, blocked, or unsupported rows cannot be hidden by a polished final summary.
 
 The concept-led front half is built into this skill. It does **not** require the older `concept-led-ui-redesign` skill.
 

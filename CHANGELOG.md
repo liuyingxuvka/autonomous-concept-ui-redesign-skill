@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.4 - 2026-06-11
+
+Added executable final ledger checking.
+
+- Added `ui_redesign_closure_check.py` so the parent-owned final integrated
+  acceptance ledger can be checked for missing, stale, skipped, partial, or
+  blocked rows before a final completion claim.
+- Updated the orchestrator prompt and run report template to include checker
+  results, safe claims, unsafe claim boundaries, and next actions.
+
 ## 0.1.3 - 2026-05-19
 
 Added parent-owned final integrated acceptance.

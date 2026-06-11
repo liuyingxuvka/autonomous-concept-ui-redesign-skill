@@ -119,6 +119,17 @@ Integrated Acceptance:
 - stale_or_missing_evidence:
 - final_verdict_downgrades:
 
+Closure Checker:
+- checker_run: yes | no
+- checker_closure_status: pass | partial | blocked
+- checker_findings:
+- checker_missing_inputs:
+- checker_stale_evidence:
+- checker_skipped_checks:
+- checker_next_actions:
+- checker_safe_claim:
+- checker_unsafe_claim_boundary:
+
 Final:
 - verdict: pass | partial | blocked
 - remaining_risks:

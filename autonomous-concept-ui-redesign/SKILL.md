@@ -465,6 +465,19 @@ Hard downgrade rules:
   to the real platform identity surface, the final status is `partial` or
   `blocked`.
 
+When the final acceptance ledger is available as JSON, run the bundled checker
+before the final verdict:
+
+```bash
+python %USERPROFILE%\\.codex\\skills\\autonomous-concept-ui-redesign\\scripts\\ui_redesign_closure_check.py --ledger <final-acceptance-ledger.json> --json
+```
+
+The checker returns `closure_status`, `findings`, `missing_inputs`,
+`stale_evidence`, `skipped_checks`, `next_actions`, `safe_claim`, and
+`unsafe_claim_boundary`. Do not treat a downgraded checker result as a full
+pass. If no structured ledger file can be saved for the run, include the same
+fields in the run report and state why the executable checker was not run.
+
 ### 7. Final Verdict
 
 The orchestrator, not any sibling skill, decides completion.
