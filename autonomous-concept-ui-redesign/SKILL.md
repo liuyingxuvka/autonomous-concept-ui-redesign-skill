@@ -292,7 +292,7 @@ shown inside the UI or concept image and not bound to the actual app identity.
 
 When a transparent raster icon master exists, use
 `scripts/app_icon_asset_check.py` when practical to check alpha/corner
-transparency, preview small sizes, and export Windows `.ico` assets. The script
+transparency, preview small sizes, and export Windows .ico assets. The script
 is mechanical evidence only; still review whether the icon is too dense,
 card-like, text-heavy, or disconnected from the selected UI concept.
 
@@ -469,7 +469,7 @@ When the final acceptance ledger is available as JSON, run the bundled checker
 before the final verdict:
 
 ```bash
-python %USERPROFILE%\\.codex\\skills\\autonomous-concept-ui-redesign\\scripts\\ui_redesign_closure_check.py --ledger <final-acceptance-ledger.json> --json
+python <local-path> --ledger <final-acceptance-ledger.json> --json
 ```
 
 The checker returns `closure_status`, `findings`, `missing_inputs`,
@@ -508,3 +508,47 @@ Do not claim completion when the final acceptance ledger downgrades the run, or
 when geometry QA, app-icon realization for applicable software artifacts, or
 required rendered evidence is missing. If evidence cannot be produced, return
 `partial` or `blocked` with the specific blocker.
+
+
+<!-- BEGIN SKILLGUARD CONTRACT LAYER -->
+## Purpose
+
+Use this skill for its declared ui_design workflow while binding each run to a route, evidence, checks, and a bounded completion claim.
+
+## Entrypoint Scope
+
+The entrypoint covers the installed autonomous-concept-ui-redesign skill and the local materials explicitly routed by its instructions. It does not expand to unrelated repositories, private files, external services, publication, or release claims unless the user request and skill workflow explicitly include them.
+
+## Local Material Routing
+
+Resolve local materials from the active workspace, this skill directory, user-provided files, or explicitly configured project paths. Treat private machine paths as local-only inputs and keep public-facing instructions portable.
+
+## Entrypoint Acceptance Map
+
+A valid run selects one declared route, follows the phase order, records direct evidence, runs required checks, reports blockers and failures, and closes only inside the claim boundary. Available routes: target surface, implementation or review, visual validation, closure.
+
+## Use When
+
+Use when the user request matches the autonomous-concept-ui-redesign activation boundary and needs this skill's governed workflow, source material, checks, or handoff behavior.
+
+## Do Not Use When
+
+Do not use when the task is outside this skill's domain, when required local materials are unavailable, when another more specific skill owns the request, or when the user asks only for a tiny direct answer.
+
+## Required Workflow
+
+Select the route, inspect local materials, perform the work in phase order, collect direct evidence, run the required checks, fix failures, and only then report progress or completion.
+
+## Hard Gates
+
+Do not skip phases, do not replace required evidence with prose, do not treat stale reports as current, do not weaken validation to pass, and do not claim completion when blockers remain.
+
+## Output Requirements
+
+When reporting, include evidence, failures, blockers, skipped_checks with reasons, residual_risk, and claim_boundary. State clearly what was checked, what was not checked, and what remains blocked or uncertain.
+
+## SkillGuard Maintenance
+
+Keep the `.skillguard` control root, work contract, check manifest, check scripts, evidence records, and progress ledger current. Re-run SkillGuard checks after changing this entrypoint, route behavior, evidence rules, or closure wording.
+
+<!-- END SKILLGUARD CONTRACT LAYER -->
