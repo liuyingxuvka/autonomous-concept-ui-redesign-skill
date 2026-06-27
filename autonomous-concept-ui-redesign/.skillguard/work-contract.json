@@ -2,16 +2,67 @@
   "schema_version": "skillguard.work_contract.v1",
   "skill_id": "autonomous-concept-ui-redesign",
   "target_path": ".codex/skills/autonomous-concept-ui-redesign",
-  "contract_version": "2",
+  "contract_version": "3",
+  "integration_mode": "hybrid-extension",
+  "native_route_owner": "Target UI/design skill workflow and visual verification guidance",
+  "native_route_bindings": [
+    {
+      "binding_id": "target_surface_native_route",
+      "native_route_id": "ui_design.target_surface",
+      "source": "Target UI/design skill workflow and visual verification guidance",
+      "required_before_closure": true
+    },
+    {
+      "binding_id": "implementation_or_review_native_route",
+      "native_route_id": "ui_design.implementation_or_review",
+      "source": "Target UI/design skill workflow and visual verification guidance",
+      "required_before_closure": true
+    },
+    {
+      "binding_id": "visual_validation_native_route",
+      "native_route_id": "ui_design.visual_validation",
+      "source": "Target UI/design skill workflow and visual verification guidance",
+      "required_before_closure": true
+    },
+    {
+      "binding_id": "closure_native_route",
+      "native_route_id": "ui_design.closure",
+      "source": "Target UI/design skill workflow and visual verification guidance",
+      "required_before_closure": true
+    }
+  ],
+  "native_check_bindings": [
+    {
+      "binding_id": "ui_workflow_review_native_check",
+      "native_check_id": "ui_workflow_review",
+      "evidence_source": "Target UI/design skill workflow and visual verification guidance",
+      "required": true
+    },
+    {
+      "binding_id": "visual_validation_review_native_check",
+      "native_check_id": "visual_validation_review",
+      "evidence_source": "Target UI/design skill workflow and visual verification guidance",
+      "required": true
+    }
+  ],
+  "skillguard_role": "hybrid_contract_executor",
+  "may_define_parallel_execution_route": false,
+  "may_define_skillguard_runtime_route": false,
+  "integration_claim_boundary": "SkillGuard executes missing contract gates around the native workflow owned by Target UI/design skill workflow and visual verification guidance only where evidence, freshness, quality-floor, or closure gates are missing. It must not replace native route/check ownership or create a parallel route map.",
   "routes": [
     {
       "route_id": "target_surface",
-      "summary": "Use the target surface route for ui_design work when the task wording and local evidence match this path.",
+      "summary": "SkillGuard contract-executor extension for the target skill's existing target surface workflow surface. This runs missing evidence, check, and closure gates without replacing the target skill's own workflow route.",
+      "route_source": "hybrid_extension",
       "activation_keywords": [
-        "autonomous-concept-ui-redesign",
+        "target_surface",
         "target surface",
-        "ui_design"
+        "target-surface",
+        "target",
+        "surface"
       ],
+      "default_route": true,
+      "route_priority": 0,
       "do_not_use_when": [
         "The task is outside this skill's activation boundary."
       ],
@@ -25,12 +76,21 @@
     },
     {
       "route_id": "implementation_or_review",
-      "summary": "Use the implementation or review route for ui_design work when the task wording and local evidence match this path.",
+      "summary": "SkillGuard contract-executor extension for the target skill's existing implementation or review workflow surface. This runs missing evidence, check, and closure gates without replacing the target skill's own workflow route.",
+      "route_source": "hybrid_extension",
       "activation_keywords": [
-        "autonomous-concept-ui-redesign",
+        "implementation_or_review",
         "implementation or review",
-        "ui_design"
+        "implementation-or-review",
+        "implementation",
+        "or",
+        "review",
+        "复核",
+        "审查",
+        "评审"
       ],
+      "default_route": false,
+      "route_priority": 1,
       "do_not_use_when": [
         "The task is outside this skill's activation boundary."
       ],
@@ -44,12 +104,21 @@
     },
     {
       "route_id": "visual_validation",
-      "summary": "Use the visual validation route for ui_design work when the task wording and local evidence match this path.",
+      "summary": "SkillGuard contract-executor extension for the target skill's existing visual validation workflow surface. This runs missing evidence, check, and closure gates without replacing the target skill's own workflow route.",
+      "route_source": "hybrid_extension",
       "activation_keywords": [
-        "autonomous-concept-ui-redesign",
+        "visual_validation",
         "visual validation",
-        "ui_design"
+        "visual-validation",
+        "visual",
+        "validation",
+        "validate",
+        "验证",
+        "测试",
+        "校验"
       ],
+      "default_route": false,
+      "route_priority": 2,
       "do_not_use_when": [
         "The task is outside this skill's activation boundary."
       ],
@@ -63,12 +132,19 @@
     },
     {
       "route_id": "closure",
-      "summary": "Use the closure route for ui_design work when the task wording and local evidence match this path.",
+      "summary": "SkillGuard contract-executor extension for the target skill's existing closure workflow surface. This runs missing evidence, check, and closure gates without replacing the target skill's own workflow route.",
+      "route_source": "hybrid_extension",
       "activation_keywords": [
-        "autonomous-concept-ui-redesign",
         "closure",
-        "ui_design"
+        "close",
+        "收尾",
+        "闭环",
+        "完成",
+        "归档",
+        "发布"
       ],
+      "default_route": false,
+      "route_priority": 3,
       "do_not_use_when": [
         "The task is outside this skill's activation boundary."
       ],
@@ -285,7 +361,7 @@
       "binding_id": "target_skill_prompt",
       "path": "SKILL.md",
       "stales": [
-        "route_selection",
+        "overlay_selection",
         "run_record",
         "closure_report"
       ]
@@ -294,12 +370,12 @@
       "binding_id": "work_contract",
       "path": ".skillguard/work-contract.json",
       "stales": [
-        "route_selection",
+        "overlay_selection",
         "run_record",
         "closure_report"
       ]
     }
   ],
-  "claim_boundary": "This work contract governs only the declared target skill and local run evidence. It does not prove external services, package publication, GitHub release readiness, or future AI correctness.",
-  "contract_hash": "0EFF1FC0461F2AA51660EB690D219F065233BAA7B05AAC6B2B67285118DFF83C"
+  "claim_boundary": "This work contract governs only SkillGuard overlay evidence for the declared target skill. It does not replace the target skill's native router/check system and does not prove external services, package publication, GitHub release readiness, or future AI correctness.",
+  "contract_hash": "A3C18F6CAB0389AA56C952F1B12AA51E0BB8498123E60F9FF717AF9DC74C5A91"
 }

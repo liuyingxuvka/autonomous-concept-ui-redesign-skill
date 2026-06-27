@@ -509,46 +509,25 @@ when geometry QA, app-icon realization for applicable software artifacts, or
 required rendered evidence is missing. If evidence cannot be produced, return
 `partial` or `blocked` with the specific blocker.
 
-
 <!-- BEGIN SKILLGUARD CONTRACT LAYER -->
 ## Purpose
-
-Use this skill for its declared ui_design workflow while binding each run to a route, evidence, checks, and a bounded completion claim.
-
+Bind each ui_design run to the declared integration mode, evidence, blockers, residual_risk, and claim_boundary.
 ## Entrypoint Scope
-
-The entrypoint covers the installed autonomous-concept-ui-redesign skill and the local materials explicitly routed by its instructions. It does not expand to unrelated repositories, private files, external services, publication, or release claims unless the user request and skill workflow explicitly include them.
-
+Covers autonomous-concept-ui-redesign plus explicitly routed local materials; no unrelated repos, private files, external services, publication, or release claims unless requested and routed.
 ## Local Material Routing
-
-Resolve local materials from the active workspace, this skill directory, user-provided files, or explicitly configured project paths. Treat private machine paths as local-only inputs and keep public-facing instructions portable.
-
+Use workspace, skill directory, user files, or configured project paths; keep private machine paths local and public instructions portable.
 ## Entrypoint Acceptance Map
-
-A valid run selects one declared route, follows the phase order, records direct evidence, runs required checks, reports blockers and failures, and closes only inside the claim boundary. Available routes: target surface, implementation or review, visual validation, closure.
-
+Use SkillGuard as the runtime contract executor for missing gates around the target workflow owned by Target UI/design skill workflow and visual verification guidance. It enforces only the missing contract gates through the target workflow; duplicate SkillGuard-owned execution paths are invalid. Declared gates/routes: target surface, implementation or review, visual validation, closure.
 ## Use When
-
-Use when the user request matches the autonomous-concept-ui-redesign activation boundary and needs this skill's governed workflow, source material, checks, or handoff behavior.
-
+Use when the request matches autonomous-concept-ui-redesign and needs this governed workflow, materials, checks, or handoff behavior.
 ## Do Not Use When
-
-Do not use when the task is outside this skill's domain, when required local materials are unavailable, when another more specific skill owns the request, or when the user asks only for a tiny direct answer.
-
+Do not use outside the domain, without required materials, when a more specific skill owns the work, or for tiny direct answers.
 ## Required Workflow
-
-Select the route, inspect local materials, perform the work in phase order, collect direct evidence, run the required checks, fix failures, and only then report progress or completion.
-
+Select the target workflow surface, fill missing SkillGuard gates around it, collect evidence, run native and SkillGuard checks, fix failures, then report.
 ## Hard Gates
-
 Do not skip phases, do not replace required evidence with prose, do not treat stale reports as current, do not weaken validation to pass, and do not claim completion when blockers remain.
-
 ## Output Requirements
-
-When reporting, include evidence, failures, blockers, skipped_checks with reasons, residual_risk, and claim_boundary. State clearly what was checked, what was not checked, and what remains blocked or uncertain.
-
+Report evidence, failures, blockers, skipped_checks with reasons, residual_risk, and claim_boundary; distinguish checked, unchecked, blocked, and uncertain.
 ## SkillGuard Maintenance
-
-Keep the `.skillguard` control root, work contract, check manifest, check scripts, evidence records, and progress ledger current. Re-run SkillGuard checks after changing this entrypoint, route behavior, evidence rules, or closure wording.
-
+Keep `.skillguard` contracts, checks, evidence, and ledger current; rerun SkillGuard after entrypoint, route, evidence, or closure changes.
 <!-- END SKILLGUARD CONTRACT LAYER -->
