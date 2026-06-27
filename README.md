@@ -10,7 +10,7 @@
 </p>
 <!-- README HERO END -->
 
-Version: 0.1.4
+Version: 0.1.5
 
 Language note: This README uses an English-first bilingual structure. The Chinese section follows as a full mirror for Chinese readers.
 
